@@ -1,0 +1,41 @@
+<div class="container">
+    <p>Введите строку JSON</p>
+    <div class="row">
+        <div class="col-sm">
+            <textarea class="form-control" #textBox                      
+                      style="height: 500px;">
+                    {{ ArrayOfJson | json }}
+            </textarea>               
+            <button class="btn btn-success" (click)="Show(textBox.value)">Продолжить</button>
+            <button class="btn btn-primary" (click)="UnloadJson()">Выгрузить</button>           
+        </div>
+        <div class="col-sm">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Year</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let x of JSONString" (click)="test($event)">
+                        <td>
+                            <input style="border: 1px solid white; width:70px;" value="{{x.name}}">
+                        </td>
+                        <td>
+                            <input style="border: 1px solid white; width:70px;" value="{{x.year}}"/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>        
+        <div class="col-sm" style="border: 1px grey solid;">
+            <p>Name</p>
+            <input type="text" [value]="name" class="form-control" #UpdateName/><br>
+            <p>Year</p>
+            <input type="text" [value]="year" class="form-control" #UpdateYear/>
+            <button class="btn btn-primary" (click)="Update(UpdateName.value, UpdateYear.value)">Обновить</button>
+        </div>
+    </div>
+</div>
+
