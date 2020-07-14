@@ -6,8 +6,8 @@
                       style="height: 500px;">
                     {{ ArrayOfJson | json }}
             </textarea>               
-            <button class="btn btn-success" (click)="Show(textBox.value)">Продолжить</button>
-            <button class="btn btn-primary" (click)="UnloadJson()">Выгрузить</button>           
+            <button class="btn btn-success" (click)="LoadJsonData(textBox.value)" id="KeepId">Продолжить</button>
+            <button class="btn btn-primary" (click)="UnloadJson()" id="UnloadId">Выгрузить</button>           
         </div>
         <div class="col-sm">
             <table class="table">
@@ -18,23 +18,37 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let x of JSONString" (click)="test($event)">
+                    <tr *ngFor="let element of JSONString" (click)="SelectElement($event)" class="ShowSelectedElement">
                         <td>
-                            <input style="border: 1px solid white; width:70px;" value="{{x.name}}">
+                            <input class="InputInsideTdStyle" value="{{element.name}}">
                         </td>
                         <td>
-                            <input style="border: 1px solid white; width:70px;" value="{{x.year}}"/>
+                            <input class="InputInsideTdStyle" value="{{element.year}}"/>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>        
-        <div class="col-sm" style="border: 1px grey solid;">
-            <p>Name</p>
-            <input type="text" [value]="name" class="form-control" #UpdateName/><br>
-            <p>Year</p>
-            <input type="text" [value]="year" class="form-control" #UpdateYear/>
-            <button class="btn btn-primary" (click)="Update(UpdateName.value, UpdateYear.value)">Обновить</button>
+        <div class="col-sm" style="border: 1px grey solid;">      
+            <div class="container">
+                <p>Name</p>
+                <input type="text" [value]="name" class="form-control" #UpdateName/><br>
+                <p>Year</p>
+                <input type="text" [value]="year" class="form-control" #UpdateYear/>
+            </div><br>
+            <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <button class="btn btn-primary" (click)="Update(UpdateName.value, UpdateYear.value)">Обновить</button>
+                </div>
+                <div class="col-sm">
+                    <button class="btn btn-success" (click)="Create(UpdateName.value, UpdateYear.value)">Новый</button>
+                </div>
+                <div class="col-sm">
+                    <button class="btn btn-danger" (click)="Delete(UpdateName.value, UpdateYear.value)">Удалить</button>
+                </div>
+            </div>
+            </div>
         </div>
     </div>
 </div>
