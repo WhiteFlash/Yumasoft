@@ -1,0 +1,21 @@
+.InputInsideTdStyle{
+    border: 1px solid white; 
+    width:70px;
+}
+
+.ShowSelectedElement :hover {
+    color: blue;
+    border: 1px solid white; 
+}
+
+#KeepId{
+    margin: 5px 100px 0px 0px;
+}
+
+#UnloadId{
+    margin-left: 29px;
+}   
+
+th, td{
+    text-align: center;
+}
