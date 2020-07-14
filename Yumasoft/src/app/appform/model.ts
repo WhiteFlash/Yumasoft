@@ -1,4 +1,4 @@
 export class Model{
     name: string;
-    year: number;
+    year: number;    
 }
